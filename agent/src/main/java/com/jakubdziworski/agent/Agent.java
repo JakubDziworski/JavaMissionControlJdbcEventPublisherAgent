@@ -15,11 +15,12 @@ import static net.bytebuddy.matcher.ElementMatchers.named;
 public class Agent {
 
     public static void agentmain(String arguments, Instrumentation instrumentation) {
-        System.out.println("before instrumenting");
+        System.out.println("agent sucesfully attached at runtime!");
         instrument(arguments,instrumentation);
     }
 
     public static void premain(String arguments, Instrumentation instrumentation) {
+        System.out.println("agent sucesfully attached at startup!");
         instrument(arguments,instrumentation);
     }
 

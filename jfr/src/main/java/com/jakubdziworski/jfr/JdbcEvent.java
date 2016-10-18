@@ -11,19 +11,19 @@ import com.oracle.jrockit.jfr.ValueDefinition;
  */
 @EventDefinition(path = "JakubDziworski/JdbcEvent", name = "Jdbc Event", description = "An event triggered by executiing jdbc query or update.", stacktrace = true, thread = true)
 public class JdbcEvent extends DurationEvent {
-    @ValueDefinition(name = "Message", description = "The logged important stuff.")
-    private String query;
+    @ValueDefinition(name = "Statement", description = "The logged important stuff.")
+    private String statement;
 
     public JdbcEvent(EventToken eventToken) {
         super(eventToken);
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public void setStatement(String statement) {
+        this.statement = statement;
     }
 
-    public String getQuery() {
-        return query;
+    public String getStatement() {
+        return statement;
     }
 }
 

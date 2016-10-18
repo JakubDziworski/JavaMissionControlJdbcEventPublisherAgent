@@ -2,6 +2,9 @@ package com.jakubdziworski.jfr;
 
 import com.oracle.jrockit.jfr.EventToken;
 import com.oracle.jrockit.jfr.Producer;
+import com.sun.management.HotSpotDiagnosticMXBean;
+
+import java.lang.management.ManagementFactory;
 
 import static sun.misc.Version.print;
 
@@ -14,6 +17,8 @@ public class EventProducer {
     private static final Producer myProducer;
 
     static {
+        HotSpotDiagnosticMXBean hsd = ManagementFactory.getPlatformMXBean(HotSpotDiagnosticMXBean.class);
+        hsd.setVMOption("UnlockCommercialFeatures", "true");
         myProducer = createProducer();
         myToken = createToken();
         myProducer.register();
@@ -29,7 +34,7 @@ public class EventProducer {
 
     private static Producer createProducer() {
         try {
-            return new Producer("Demo Producer", "A demo event producer.", "http://www.example.com/demo/");
+            return new Producer("JDBC Producer", "Jdbc events producer", "http://www.example.com/jdbc");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -38,7 +43,7 @@ public class EventProducer {
     public static JdbcEvent startJdbcQuery(String query) {
         JdbcEvent jdbcEvent = new JdbcEvent(myToken);
         jdbcEvent.begin();
-        jdbcEvent.setQuery(query);
+        jdbcEvent.setStatement(query);
         return jdbcEvent;
     }
 
