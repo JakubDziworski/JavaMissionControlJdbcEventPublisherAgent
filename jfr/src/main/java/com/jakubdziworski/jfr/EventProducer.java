@@ -6,8 +6,6 @@ import com.sun.management.HotSpotDiagnosticMXBean;
 
 import java.lang.management.ManagementFactory;
 
-import static sun.misc.Version.print;
-
 /**
  * Created by Jakub Dziworski on 17.10.16
  */
@@ -48,7 +46,6 @@ public class EventProducer {
     }
 
     public static void endJdbcEvent(JdbcEvent jdbcEvent) {
-        System.out.println("Ending " + jdbcEvent);
         jdbcEvent.end();
         jdbcEvent.commit();
     }

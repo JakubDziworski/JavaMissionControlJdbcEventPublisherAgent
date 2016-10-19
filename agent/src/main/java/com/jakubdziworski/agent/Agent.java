@@ -25,7 +25,7 @@ public class Agent {
     }
 
     private static void instrument(String arguments, Instrumentation instrumentation) {
-        System.out.println("instrumenting");
+        System.out.println("started instrumenting");
         ExecutePreparedStatementImplementation preparedStmtImplementation = new ExecutePreparedStatementImplementation();
         Transformer transformer = (builder, typeDescription, classLoader) -> {
             return builder.method(named("executeQuery").or(named("executeUpdate")))
