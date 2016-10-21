@@ -12,7 +12,6 @@ import java.util.concurrent.Callable;
  */
 public class ExecutePreparedStatementImplementation {
 
-    private Random random = new Random();
     @RuntimeType
     public Object execute(@This Object preparedStatement, @SuperCall Callable<?> superMethod) throws Exception {
         JdbcEvent jdbcEvent = EventProducer.startJdbcQuery(preparedStatement.toString());
