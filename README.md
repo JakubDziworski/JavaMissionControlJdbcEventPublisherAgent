@@ -22,7 +22,8 @@ and start it
 ### Option 2 - Attach to the running jvm
 ```bash 
 mvn clean package
-java -classpath agent/target/agent-1.0-SNAPSHOT-jar-with-dependencies.jar:jfr/target/classes:/usr/jdk1.8.0_71/lib/tools.jar com.jakubdziworski.agent.RuntimeAttacher 12041 /home/jdziworski/repos/JavaMissionControlJdbcEventPublisherAgent/agent/target/agent-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -classpath agent/target/agent-1.0-SNAPSHOT-jar-with-dependencies.jar:jfr/target/jfr-1.0-SNAPSHOT.jar:/usr/jdk1.8.0_71/lib/tools.jar com.jakubdziworski.agent.RuntimeAttacher 12041 /home/jdziworski/repos/JavaMissionControlJdbcEventPublisherAgent/agent/target/agent-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 ```
 
 Start new fligh recording in jmc. **Remember to enable custom event in "Start Recording Settings Wizard"!!**
